@@ -23,6 +23,14 @@ it('Should get chain info', async () => {
     expect(chainInfo).toMatchObject(chain);
 });
 
+it('Should get block info', async () => {
+    expect.assertions(1);
+
+    let blocks = await blockService.getBlock(2);
+
+    expect(blocks).toMatchObject(block2);
+});
+
 it('Should get recent blocks', async () => {
     expect.assertions(1);
 
