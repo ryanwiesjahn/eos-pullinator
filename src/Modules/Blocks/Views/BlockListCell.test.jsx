@@ -26,18 +26,24 @@ describe("BlockListCell", () => {
     /* Tests */
 
     it("shows block number", () => {
-        expect(blockListCell().text().includes(block.block_num)).toBeTruthy();
+        let numberElement = blockListCell().find('header').find('span').first();
+        expect(numberElement.text().includes(block.block_num)).toBeTruthy();
     });
 
     it("shows block hash", () => {
-        expect(blockListCell().text().includes(block.id)).toBeTruthy();
+        let hashElement = blockListCell().find('header').find('span').last();
+        expect(hashElement.text().includes(block.id)).toBeTruthy();
     });
 
     it("shows block timestamp", () => {
-        expect(blockListCell().text().includes(block.timestamp)).toBeTruthy();
+        let timestampElement = blockListCell().find('div').at(2).find('p').first();
+        expect(timestampElement.text().includes(block.timestamp)).toBeTruthy();
     });
 
-    // TODO: Test showing action count.
+    it("shows block transaction count", () => {
+        let transactionsElement = blockListCell().find('div').at(2).find('p').last();
+        expect(transactionsElement.text().includes(block.transactions.length)).toBeTruthy();
+    });
 
     it("toggles raw block data on click", () => {
         const pre = () => blockListCell().find('pre');

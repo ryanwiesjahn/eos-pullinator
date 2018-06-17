@@ -11,7 +11,11 @@ export default {
     schedule_version: 10,
     new_producers: null,
     header_extensions: [],
-    transactions: [],
+    transactions: [{
+        status: "executed"
+    },{
+        status: "executed"
+    }],
     block_extensions: [],
     ref_block_prefix: 11
 }
