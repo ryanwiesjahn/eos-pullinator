@@ -20,19 +20,29 @@ export default class BlockListCell extends Component {
                     <Hash>{this.props.block.id}</Hash>
                 </Header>
                 <Content>
+                    <HiddenCheckbox />
                     <Timestamp><Label>Timestamp:</Label> {this.props.block.timestamp}</Timestamp>
                     <Actions><Label>Action Count:</Label> CHANGE ME</Actions>
+                    <Raw>{JSON.stringify(this.props.block)}</Raw>
                 </Content>
             </View>
         );
     }
 }
 
-const View = styled.div`
+const View = styled.label`
+    display: block;
     background: #ffffff;
     border-radius: 5px;
     margin-bottom: 20px;
     overflow: hidden;
+    cursor: pointer;
+`;
+
+const HiddenCheckbox = styled.input.attrs({
+    type: "checkbox"
+})`
+    display: none;
 `;
 
 const Header = styled.header`
@@ -65,15 +75,17 @@ const Content = styled.div`
 `;
 
 const Info = styled.p`
-    margin: 10px 0 0;
+    margin: 0 0 10px;
 `;
 
 const Timestamp = Info.extend`
-    margin: 0;
+    
 `;
 
 const Actions = Info.extend`
-    
+    ${HiddenCheckbox}:not(:checked) ~ & {
+        margin: 0;
+    }
 `;
 
 const Label = styled.span`
@@ -82,4 +94,21 @@ const Label = styled.span`
     text-transform: uppercase;
     font-size: 0.8em;
     font-weight: 500;
+`;
+
+const Raw = styled.pre`
+    background: rgba(0, 0, 0, 0.05);
+    color: #7B7F92;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 10px 13px;
+    border-radius: 5px;
+    line-height: 1.5em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    display: none;
+
+    ${HiddenCheckbox}:checked ~ & {
+        display: block;
+    }
 `;
