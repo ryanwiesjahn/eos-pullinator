@@ -15,9 +15,9 @@ export default class BlockListView extends Component {
     render() {
         return (
             <div>
-                <header>
+                <Header>
                     <Heading>Most recent blocks</Heading>
-                </header>
+                </Header>
 
                 <div>
                     {this._renderBlockList()}
@@ -37,7 +37,12 @@ export default class BlockListView extends Component {
     }
 }
 
+const Header = styled.header`
+    margin-bottom: 20px;
+`;
+
 const Heading = styled.h1`
+    color: #1F2E41;
     font-size: 2.1em;
     margin: 0;
 `;

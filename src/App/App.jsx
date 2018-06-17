@@ -5,7 +5,7 @@ import BlockListContainer from '../Modules/Blocks/Containers/BlockListContainer'
 export default class App extends Component {
     render() {
         return (
-            <div>
+            <Page>
                 <Border />
                 <Header>
                     <Logo>EOS Pullinator</Logo>
@@ -14,17 +14,25 @@ export default class App extends Component {
                 <Content>
                     <BlockListContainer />
                 </Content>
-            </div>
+            </Page>
         );
     }
 }
 
+const Page = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 const Border = styled.div`
     background: #4651AE;
+    width: 100%;
     height: 8px;
 `;
 
 const Header = styled.header`
+    align-self: flex-start;
     padding: 20px 30px;
 `;
 
@@ -34,5 +42,6 @@ const Logo = styled.span`
 `;
 
 const Content = styled.div`
+    width: 700px;
     padding: 30px;
 `;
