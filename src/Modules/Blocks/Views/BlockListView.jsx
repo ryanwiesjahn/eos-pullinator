@@ -9,10 +9,6 @@ export default class BlockListView extends Component {
         onUpdateBlockList: PropTypes.func,
     };
 
-    static defaultProps = {
-        blocks: null
-    };
-
     render() {
         return (
             <div>
