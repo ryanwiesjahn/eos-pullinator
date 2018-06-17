@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { injectGlobal } from 'styled-components';
 import WebFont from 'webfontloader';
-import App from './App/App';
 import registerServiceWorker from './registerServiceWorker';
+import App from './App/App';
 
 WebFont.load({
     google: {
