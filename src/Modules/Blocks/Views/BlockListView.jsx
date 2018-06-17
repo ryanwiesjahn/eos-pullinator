@@ -46,7 +46,7 @@ const Header = styled.header`
 
 const Heading = styled.h1`
     color: #1F2E41;
-    font-size: 2.1em;
+    font-size: 1.8em;
     margin: 0;
     flex: 1;
 `;

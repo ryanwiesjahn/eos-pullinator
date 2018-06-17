@@ -38,7 +38,7 @@ const Header = styled.header`
 
 const Logo = styled.span`
     color: #4651AE;
-    font-size: 1.5em;
+    font-size: 1.4em;
 `;
 
 const Content = styled.div`
