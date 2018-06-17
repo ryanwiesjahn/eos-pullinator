@@ -5,43 +5,53 @@ import block1 from './__mocks__/block1';
 import block2 from './__mocks__/block2';
 import block3 from './__mocks__/block3';
 
+const CHAIN_ID = 'CHAIN_ID_1';
 let blockService = null;
 
-beforeEach(() => {
-    EosAPI.mockClear();
-
-    blockService = new BlockService({
-        chainId: 'CHAIN_ID_1'
+describe('BlockService', () => {
+    beforeEach(() => {
+        EosAPI.mockClear();
+    
+        blockService = new BlockService({
+            chainId: CHAIN_ID
+        });
     });
+
+    it('getChainInfo should return chain info', async () => {
+        expect.assertions(1);
+        await expect(blockService.getChainInfo()).resolves.toMatchObject(chain);
+    });
+
+    it('getBlock should return block info', async () => {
+        expect.assertions(1);
+        await expect(blockService.getBlock(2)).resolves.toMatchObject(block2);
+    });
+
+    it('getRecentBlocks should return the specified amount of most recent blocks', async () => {
+        expect.assertions(1);
+        await expect(blockService.getRecentBlocks(3)).resolves.toMatchObject([
+            block3,
+            block2,
+            block1
+        ]);
+    });
+
+    it('getRecentBlocks should not allow an amount < 1', async () => {
+        expect.assertions(1);
+        try {
+            await blockService.getRecentBlocks(0);
+        } catch(e) {
+            expect(e).toBeInstanceOf(RangeError);
+        }
+    });
+
+    it('getRecentBlocks should not allow an amount > 100', async () => {
+        expect.assertions(1);
+        try {
+            await blockService.getRecentBlocks(101);
+        } catch(e) {
+            expect(e).toBeInstanceOf(RangeError);
+        }
+    });
+
 });
-
-it('Should get chain info', async () => {
-    expect.assertions(1);
-
-    let chainInfo = await blockService.getChainInfo();
-
-    expect(chainInfo).toMatchObject(chain);
-});
-
-it('Should get block info', async () => {
-    expect.assertions(1);
-
-    let block = await blockService.getBlock(2);
-
-    expect(block).toMatchObject(block2);
-});
-
-it('Should get recent blocks', async () => {
-    expect.assertions(1);
-
-    let blocks = await blockService.getRecentBlocks(3);
-
-    expect(blocks).toMatchObject([
-        block3,
-        block2,
-        block1
-    ]);
-});
-
-// TODO: Test trying to get amount more than amount of blocks available
-// TODO: Test trying to get too many blocks
