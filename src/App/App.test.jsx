@@ -22,9 +22,8 @@ describe("App", () => {
 
     /* Tests */
 
-    it("always renders a div", () => {
-        const divs = app().find("div");
-        expect(divs.length).toBeGreaterThan(0);
+    it("always renders a `BlockListContainer`", () => {
+        expect(app().find(BlockListContainer).length).toBe(1);
     });
 
 });
