@@ -42,3 +42,6 @@ it('Should get recent blocks', async () => {
         block3
     ]);
 });
+
+// TODO: Test trying to get amount more than amount of blocks available
+// TODO: Test trying to get too many blocks

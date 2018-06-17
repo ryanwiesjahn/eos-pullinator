@@ -16,8 +16,8 @@ export default class BlockService {
     }
 
     async getRecentBlocks(amount) {
-        if(amount < 1) {
-            throw new RangeError("The amount must be at least 1.");
+        if(amount < 1 || amount > 100) {
+            throw new RangeError("The amount must be between 1 and 100, inclusive.");
         }
 
         let chainInfo = await this.getChainInfo();
