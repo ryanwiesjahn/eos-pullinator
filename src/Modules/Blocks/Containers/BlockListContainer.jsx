@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BlockListView from '../Views/BlockListView';
 import BlockService from '../../../Common/Services/BlockService';
+import config from '../../../config';
 
 export default class BlockListContainer extends Component {
     _blockService;
@@ -8,10 +9,7 @@ export default class BlockListContainer extends Component {
     constructor(props) {
         super(props);
 
-        this._blockService = new BlockService({
-            httpEndpoint: 'https://eos.greymass.com',
-            chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
-        });
+        this._blockService = new BlockService(config.blockservice);
 
         this.state = {
             blocks: null
