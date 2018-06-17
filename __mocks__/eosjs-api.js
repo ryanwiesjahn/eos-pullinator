@@ -1,7 +1,7 @@
-import chain from '../src/Common/Services/__mocks__/chain';
-import block1 from '../src/Common/Services/__mocks__/block1';
-import block2 from '../src/Common/Services/__mocks__/block2';
-import block3 from '../src/Common/Services/__mocks__/block3';
+import chain from './chain';
+import block1 from './block1';
+import block2 from './block2';
+import block3 from './block3';
 
 const mockEOS = jest.fn(() => {
     return {
