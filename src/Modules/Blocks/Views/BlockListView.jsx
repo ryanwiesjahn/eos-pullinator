@@ -10,7 +10,7 @@ export default class BlockListView extends Component {
     };
 
     static defaultProps = {
-        blocks: []
+        blocks: null
     };
 
     render() {
@@ -18,12 +18,15 @@ export default class BlockListView extends Component {
             <div>
                 <Header>
                     <Heading>Most recent blocks</Heading>
-                    <Button
-                        onClick={this.props.onUpdateBlockList}>Load Blocks</Button>
+                    <Button onClick={this.props.onUpdateBlockList}>Load Blocks</Button>
                 </Header>
 
                 <div>
-                    {this._renderBlockList()}
+                    {this.props.blocks ?
+                        this._renderBlockList()
+                    : (
+                        <Loading>Loading...</Loading>
+                    )}
                 </div>
             </div>
         );
@@ -68,4 +71,11 @@ const Button = styled.button`
     &:hover {
         background: #6B76D5;
     }
-`
+`;
+
+const Loading = styled.div`
+    color: #7B7F92;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 50px;
+`;

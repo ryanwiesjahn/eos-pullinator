@@ -14,7 +14,7 @@ export default class BlockListContainer extends Component {
         });
 
         this.state = {
-            blocks: []
+            blocks: null
         }
     }
 
@@ -24,7 +24,7 @@ export default class BlockListContainer extends Component {
 
     updateRecentBlocks = async () => {
         this.setState({
-            blocks: []
+            blocks: null
         });
 
         let blocks = await this._blockService.getRecentBlocks(10);
