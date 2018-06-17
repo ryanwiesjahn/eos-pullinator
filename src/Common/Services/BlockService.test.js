@@ -26,9 +26,9 @@ it('Should get chain info', async () => {
 it('Should get block info', async () => {
     expect.assertions(1);
 
-    let blocks = await blockService.getBlock(2);
+    let block = await blockService.getBlock(2);
 
-    expect(blocks).toMatchObject(block2);
+    expect(block).toMatchObject(block2);
 });
 
 it('Should get recent blocks', async () => {
@@ -37,9 +37,9 @@ it('Should get recent blocks', async () => {
     let blocks = await blockService.getRecentBlocks(3);
 
     expect(blocks).toMatchObject([
-        block1,
+        block3,
         block2,
-        block3
+        block1
     ]);
 });
 
