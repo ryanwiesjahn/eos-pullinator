@@ -47,12 +47,12 @@ const Border = styled.div`
 
 const Number = styled.span`
     background: #4651AE;
-    color: #ffffff;
+    color: #EFF3FF;
     font-size: 0.8em;
     font-weight: 500;
     border-radius: 0 0 5px 0;
     padding: 5px;
-    margin-right: 10px;
+    margin-right: 8px;
 `;
 
 const Hash = styled.span`

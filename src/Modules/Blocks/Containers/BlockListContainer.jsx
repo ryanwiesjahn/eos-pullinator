@@ -19,12 +19,15 @@ export default class BlockListContainer extends Component {
     }
 
     componentDidMount() {
-        this._updateRecentBlocks();
+        this.updateRecentBlocks();
     }
 
-    async _updateRecentBlocks() {
+    updateRecentBlocks = async () => {
+        this.setState({
+            blocks: []
+        });
+
         let blocks = await this._blockService.getRecentBlocks(10);
-        console.log(blocks)
         this.setState({
             blocks
         });
@@ -32,7 +35,9 @@ export default class BlockListContainer extends Component {
 
     render() {
         return (
-            <BlockListView blocks={this.state.blocks} />
+            <BlockListView 
+                blocks={this.state.blocks}
+                onUpdateBlockList={this.updateRecentBlocks} />
         );
     }
 }
