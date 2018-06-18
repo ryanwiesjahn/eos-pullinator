@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
+import BlockListView from "./BlockListView";
 import block1 from '../../../../__mocks__/block1';
 import block2 from '../../../../__mocks__/block2';
 import block3 from '../../../../__mocks__/block3';
-import BlockListView from "./BlockListView";
 import BlockListCell from './BlockListCell';
 jest.mock('./BlockListCell');
 
@@ -24,6 +24,7 @@ describe("BlockListView", () => {
             onUpdateBlockList: undefined
         };
         mountedBlockListView = undefined;
+        BlockListCell.mockClear();
     });
 
     it("calls onUpdateBlockList on button click", () => {

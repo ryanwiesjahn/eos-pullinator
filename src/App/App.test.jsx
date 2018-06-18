@@ -17,6 +17,7 @@ describe("App", () => {
   
     beforeEach(() => {
         mountedApp = undefined;
+        BlockListContainer.mockClear();
     });
     
 

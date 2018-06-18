@@ -26,10 +26,9 @@ describe('BlockService', () => {
     });
 
     it('getRecentBlocks should return the specified amount of most recent blocks', async () => {
-        await expect(blockService.getRecentBlocks(3)).resolves.toMatchObject([
+        await expect(blockService.getRecentBlocks(2)).resolves.toMatchObject([
             block3,
-            block2,
-            block1
+            block2
         ]);
     });
 

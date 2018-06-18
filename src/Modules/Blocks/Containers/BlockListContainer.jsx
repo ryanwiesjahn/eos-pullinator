@@ -17,10 +17,10 @@ export default class BlockListContainer extends Component {
     }
 
     componentDidMount() {
-        this.updateRecentBlocks();
+        this._updateRecentBlocks();
     }
 
-    updateRecentBlocks = async () => {
+    _updateRecentBlocks = async () => {
         this.setState({
             blocks: null
         });
@@ -35,7 +35,7 @@ export default class BlockListContainer extends Component {
         return (
             <BlockListView 
                 blocks={this.state.blocks}
-                onUpdateBlockList={this.updateRecentBlocks} />
+                onUpdateBlockList={this._updateRecentBlocks} />
         );
     }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
-import block from '../../../../__mocks__/block1';
 import BlockListCell from "./BlockListCell";
+import block from '../../../../__mocks__/block1';
 
 describe("BlockListCell", () => {
     let props;

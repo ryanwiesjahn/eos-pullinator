@@ -34,7 +34,7 @@ export default class BlockListCell extends Component {
                 </Header>
                 <Content>
                     <Timestamp><Label>Timestamp:</Label> {this.props.block.timestamp}</Timestamp>
-                    <Transactions><Label>Transaction Count:</Label> {this.props.block.transactions.length}</Transactions>
+                    <Transactions><Label>Transactions:</Label> {this.props.block.transactions.length}</Transactions>
                     { this.state.showBlockData &&
                         <Raw>{JSON.stringify(this.props.block)}</Raw>
                     }

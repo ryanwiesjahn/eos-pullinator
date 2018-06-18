@@ -8,11 +8,11 @@ export default class BlockService {
     }
 
     async getChainInfo() {
-        return await this._eos.getInfo({});
+        return this._eos.getInfo({});
     }
 
     async getBlock(blockNumber) {
-        return await this._eos.getBlock(blockNumber);
+        return this._eos.getBlock(blockNumber);
     }
 
     async getRecentBlocks(amount) {
@@ -23,9 +23,9 @@ export default class BlockService {
         let chainInfo = await this.getChainInfo();
         let headBlockNumber = chainInfo.head_block_num;
 
-        return await Promise.all(Array.from(Array(amount)).map(async (value, index) => {
+        return Promise.all(Array.from(Array(amount)).map(async (value, index) => {
             let blockNumber = headBlockNumber - index;
-            return await this.getBlock(blockNumber);
+            return this.getBlock(blockNumber);
         }));
     }
 }
