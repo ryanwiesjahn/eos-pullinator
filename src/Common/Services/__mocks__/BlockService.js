@@ -1,14 +1,14 @@
-import chain from './chain';
-import block1 from './block1';
-import block2 from './block2';
-import block3 from './block3';
+import chain from '../../../../__mocks__/chain';
+import block1 from '../../../../__mocks__/block1';
+import block2 from '../../../../__mocks__/block2';
+import block3 from '../../../../__mocks__/block3';
 
-const mockEOS = jest.fn(() => {
+const BlockService = jest.fn(() => {
     return {
-        getInfo: jest.fn(async empty => {
+        getChainInfo: jest.fn(async () => {
             return Promise.resolve(chain);
         }),
-        
+
         getBlock: jest.fn(async (blockNumber) => {
             switch(blockNumber) {
                 case 1:
@@ -20,16 +20,12 @@ const mockEOS = jest.fn(() => {
                 default:
                     return null;
             }
+        }),
+
+        getRecentBlocks: jest.fn(async (amount) => {
+            return Promise.resolve([block3, block2]);
         })
     };
 });
 
-const mockEosAPI = jest.fn(config => {
-    if(config.chainId === 'CHAIN_ID_1') {
-        return new mockEOS();
-    }
-
-    return null;
-});
-
-export default mockEosAPI;
+export default BlockService;
